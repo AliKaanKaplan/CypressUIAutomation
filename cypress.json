@@ -1,8 +1,12 @@
 {
     "ignoreTestFiles":["*.js","*.md"],
-    "defaultCommandTimeout": 30000,
+    "defaultCommandTimeout": 20000,
     "pageLoadTimeout": 20000,
     "env": {
         "url": "https://www.epam.com/"
-    }
+    },
+    "chromeWebSecurity": false,
+        "retries": {
+          "runMode": 2
+        }
 }

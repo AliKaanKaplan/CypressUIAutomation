@@ -5,10 +5,44 @@ import {HomePageSelector} from "../selector/HomePageSelector"
 
 class HomePage {
 
-    openTheHomePage(){
+    openTheHomePage(language){
         cy.viewport(1280,720)
-        cy.visit('https://www.epam.com/')
-        basePage.waitForMilliseconds(5000)
+        cy.fixture('baseUrl').then((base_url) => {
+            switch(language) {
+                case "Hungary" :
+                  cy.visit(base_url.Hungary)
+                  break;
+                case "Беларусь":
+                  cy.visit(base_url.Беларусь)
+                  break;
+                case "Czech Republic" :
+                    cy.visit(base_url.CzechRepublic)
+                    break;
+                case "India":
+                    cy.visit(base_url.India)
+                    break;
+                case "Россия" :
+                    cy.visit(base_url.Россия)
+                    break;
+                case "Česká Republika" :
+                   cy.visit(base_url.ČeskáRepublika)
+                        break;
+                case "Polska" :
+                    cy.visit(base_url.Polska)
+                    break;
+                case "Україна":
+                    cy.visit(base_url.Україна)
+                    break;
+                case "DACH" :
+                    cy.visit(base_url.DACH)
+                    break;
+                case "中国":
+                    cy.visit(base_url.中国)
+                    break;
+                default:
+                    cy.visit(base_url.Global)
+              }
+        })
    }
 
    clickTheEpamLogoInHeader(){
@@ -16,39 +50,34 @@ class HomePage {
     }
 
     clickMenuListAndCheckUrl(){
-        cy.get(HomePageSelector.menuList).should('have.length', 6)
-        cy.get(HomePageSelector.menuList).each(($el, index, $list) => {
-                    cy.get(HomePageSelector.menuList).eq(index).click();
-                    basePage.waitForMilliseconds(5000)
-                    cy.get(HomePageSelector.menuList).eq(index).invoke('attr','href').then($contains_url => {
-                        cy.url().should('include', $contains_url)
-                    })
-
-                    cy.get(HomePageSelector.menuList).eq(index).invoke('attr','href').then($contains_url => {
-                        cy.url().should('include', $contains_url)
-                    })
-                  
-            })
+            cy.get(HomePageSelector.menuList).should('have.length', 6)
+            cy.get(HomePageSelector.menuList).each(($el, index, $list) => {
+                        cy.get(HomePageSelector.menuList).eq(index).click();
+                        cy.get(HomePageSelector.menuList).eq(index).invoke('attr','href').then($contains_url => {
+                            cy.url().should('include', $contains_url)
+                        })
+                })
     }
 
     clickMenuListAndCheckTitle(){
         cy.get(HomePageSelector.menuList).should('have.length', 6)
+        cy.fixture('pageTitle').then((page_title) => {
+            var title_list=[
+                page_title.servicesPage,
+                page_title.howDoItPage,
+                page_title.ourWorkPage,
+                page_title.InSightsPage,
+                page_title.aboutPage,
+                page_title.careersPage]
+            cy.get(HomePageSelector.menuList).each(($el, index, $list) => {
+                cy.get(HomePageSelector.menuList).eq(index).click();
+                cy.title().should('include', title_list[index])
+             })
+        })
+    }
 
-        var title_list =
-        [
-        "Our Services | EPAM",
-        "How We Do It | Agile Product Engineering Services | EPAM",
-        "Explore our Work | EPAM Customer Stories, Brochures & Accelerators",
-        "Discover our Latest Insights | EPAM",
-        "One of the Fastest-Growing Public Tech Companies | About EPAM",
-        "Explore Professional Growth Opportunities | EPAM Careers"
-        ]
-
-        cy.get(HomePageSelector.menuList).each(($el, index, $list) => {
-                    cy.get(HomePageSelector.menuList).eq(index).click();
-                    basePage.waitForMilliseconds(5000)
-                    cy.title().should('include', title_list[index])
-            })
+    verifyHeaderLogo(){
+        cy.get(HomePageSelector.mainPageLogo).should('be.visible')
     }
 
 }
