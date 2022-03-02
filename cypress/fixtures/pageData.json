@@ -1,0 +1,21 @@
+{ 
+      "pageTitle":
+      {
+        "servicesPage":"Our Services | EPAM",
+        "howDoItPage":"How We Do It | Agile Product Engineering Services | EPAM",
+        "ourWorkPage":"Explore our Work | EPAM Customer Stories, Brochures & Accelerators",
+        "InSightsPage":"Discover our Latest Insights | EPAM",
+        "aboutPage":"One of the Fastest-Growing Public Tech Companies | About EPAM",
+        "careersPage":"Explore Professional Growth Opportunities | EPAM Careers"
+      },
+      "contentData":
+        {
+          "HomePageOwlData":
+            [
+              "We amplify the power of competition as a force for good—driving positive change that moves us to a more equitable future for society, organizations and their people.",
+              "We work alongside you to solve the most complex cloud problems, implementing solutions flexible enough to stand the test of time and agile enough to unleash opportunity.",
+              "To stay ahead of the ever-evolving battle against cyber attacks, security must be architected into every facet of your business. You need security as pervasive as your cloud. Security that matches the pace of agile development. Security designed into your enterprise systems. Cybersecurity By Design does just that.",
+              "By combining our core engineering expertise and human-centric innovation capabilities, we help companies achieve total automation of customer interactions and channel ubiquity, enabled by APIs and AI-powered intelligent assistants."
+            ]
+        }      
+}

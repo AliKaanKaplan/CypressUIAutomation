@@ -2,47 +2,46 @@
 
 import basePage from "./BasePage";
 import {HomePageSelector} from "../selector/HomePageSelector"
+import {baseUrl} from "../fixtures/baseUrl";
 
 class HomePage {
 
     openTheHomePage(language){
         cy.viewport(1280,720)
-        cy.fixture('baseUrl').then((base_url) => {
             switch(language) {
                 case "Hungary" :
-                  cy.visit(base_url.Hungary)
+                  cy.visit(baseUrl.Hungary)
                   break;
                 case "Беларусь":
-                  cy.visit(base_url.Беларусь)
+                  cy.visit(baseUrl.Беларусь)
                   break;
                 case "Czech Republic" :
-                    cy.visit(base_url.CzechRepublic)
+                    cy.visit(baseUrl.CzechRepublic)
                     break;
                 case "India":
-                    cy.visit(base_url.India)
+                    cy.visit(baseUrl.India)
                     break;
                 case "Россия" :
-                    cy.visit(base_url.Россия)
+                    cy.visit(baseUrl.Россия)
                     break;
                 case "Česká Republika" :
-                   cy.visit(base_url.ČeskáRepublika)
+                   cy.visit(baseUrl.ČeskáRepublika)
                         break;
                 case "Polska" :
-                    cy.visit(base_url.Polska)
+                    cy.visit(baseUrl.Polska)
                     break;
                 case "Україна":
-                    cy.visit(base_url.Україна)
+                    cy.visit(baseUrl.Україна)
                     break;
                 case "DACH" :
-                    cy.visit(base_url.DACH)
+                    cy.visit(baseUrl.DACH)
                     break;
                 case "中国":
-                    cy.visit(base_url.中国)
+                    cy.visit(baseUrl.中国)
                     break;
                 default:
-                    cy.visit(base_url.Global)
+                    cy.visit(baseUrl.Global)
               }
-        })
    }
 
    clickTheEpamLogoInHeader(){
@@ -61,25 +60,45 @@ class HomePage {
 
     clickMenuListAndCheckTitle(){
         cy.get(HomePageSelector.menuList).should('have.length', 6)
-        cy.fixture('pageTitle').then((page_title) => {
-            var title_list=[
-                page_title.servicesPage,
-                page_title.howDoItPage,
-                page_title.ourWorkPage,
-                page_title.InSightsPage,
-                page_title.aboutPage,
-                page_title.careersPage]
             cy.get(HomePageSelector.menuList).each(($el, index, $list) => {
                 cy.get(HomePageSelector.menuList).eq(index).click();
-                cy.title().should('include', title_list[index])
+               cy.title().should('include',baseUrl.Hungary)
              })
-        })
     }
 
     verifyHeaderLogo(){
         cy.get(HomePageSelector.mainPageLogo).should('be.visible')
     }
 
+    verifySliderButton(){
+        cy.fixture('contentTitle').then((content_title) => {
+            const titleList = 
+            [
+                content_title.one,
+                content_title.two,
+                content_title.three,
+                content_title.four
+            ]
+
+            cy.get(HomePageSelector.first_slider_button_list).eq(0).click({force:true})
+            cy.contains(titleList[0]).scrollIntoView({ easing: 'linear' }).should('be.visible')
+            cy.get(HomePageSelector.first_slider_button_list).eq(1).click({force:true})
+            cy.contains(titleList[1]).scrollIntoView({ easing: 'linear' }).should('be.visible')
+            cy.get(HomePageSelector.first_slider_button_list).eq(2).click({force:true})
+            cy.contains(titleList[2]).scrollIntoView({ easing: 'linear' }).should('be.visible')
+            cy.get(HomePageSelector.first_slider_button_list).eq(3).click({force:true})
+            cy.contains(titleList[3]).scrollIntoView({ easing: 'linear' }).should('be.visible')
+             })
+
+    }
 }
 
 export default new HomePage();
+
+
+
+
+
+
+
+

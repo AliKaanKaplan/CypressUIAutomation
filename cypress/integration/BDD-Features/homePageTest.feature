@@ -1,18 +1,9 @@
 Feature: HomePage Suite
 
     @regression
-    Scenario: Header logo should visible with Static Parameter
-        Given Open The Home Page "Global"
-        Then User should see header logo
-
-    @regression
-    Scenario: URL control of the menus in the header
-        Given Open The Home Page "Global"
-        Then Click Menu list item and Verify Page Url
-    
-    @regression
     Scenario: Title control of the menus in the header
         Given Open The Home Page "Global"
+        When Click the "Services" menu
         Then Click Menu list item and Verify Page Title
 
     @regression
@@ -31,3 +22,18 @@ Feature: HomePage Suite
             | Україна         |
             | DACH            |
             | 中国             |
+
+    @wip
+    Scenario: Slider buttons control
+        Given Open The Home Page "Global"
+        Then Click slider and verify Page
+
+    @regression
+    Scenario: Header logo should visible with Static Parameter
+        Given Open The Home Page "Global"
+        Then User should see header logo
+
+    @regression
+    Scenario: URL control of the menus in the header
+        Given Open The Home Page "Global"
+        Then Click Menu list item and Verify Page Url

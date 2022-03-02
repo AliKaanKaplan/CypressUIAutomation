@@ -22,3 +22,8 @@ Then('Click Menu list item and Verify Page Title', () => {
 Then('User should see header logo', () => {
     homePage.verifyHeaderLogo()
 });
+
+Then('Click slider and verify Page', () => {
+    homePage.verifySliderButton()
+});
+
