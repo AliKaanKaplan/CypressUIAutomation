@@ -13,10 +13,12 @@
   "author": "Ali Kaan Kaplan",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^9.5.0",
     "cypress-cucumber-preprocessor": "^4.3.1"
   },
-  "cypress-cucumber-preprocessor":{
-    "step_definitions":"cypress/integration/Steps/**/"
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/e2e/Steps/**/"
+  },
+  "devDependencies": {
+    "cypress": "^10.0.3"
   }
 }

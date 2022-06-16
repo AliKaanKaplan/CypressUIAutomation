@@ -62,6 +62,7 @@ class HomePage {
         cy.get(HomePageSelector.menuList).should('have.length', 6)
             cy.get(HomePageSelector.menuList).each(($el, index, $list) => {
                 cy.get(HomePageSelector.menuList).eq(index).click();
+                cy.wait(2000)
                cy.title().should('include',baseUrl.Hungary)
              })
     }
